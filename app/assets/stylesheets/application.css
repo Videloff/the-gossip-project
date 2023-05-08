@@ -51,6 +51,10 @@
   background-color:rgb(241, 225, 225);
 }
 
+.bk_secret {
+  background-color:rgb(241, 225, 240);
+}
+
 /* POST IT DESIGN */
 body{margin-top:20px;}
 
