@@ -1,5 +1,15 @@
 require 'faker'
 
+City.destroy_all
+Like.destroy_all
+Gossip.destroy_all
+User.destroy_all
+Comment.destroy_all
+Tag.destroy_all
+PrivateMessage.destroy_all
+GossipTag.destroy_all
+
+
 # création de 10 villes
 10.times do
   City.create(
@@ -36,6 +46,7 @@ end
   )
   gossip.user = User.all.sample
   gossip.tags << Tag.all.sample
+  gossip.save
 end
 
 # création de quelques messages privés

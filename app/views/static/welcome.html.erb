@@ -7,21 +7,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-sm navbar navbar-light" style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="#">GOSSIP Project</a>
+    <nav class="navbar navbar-expand-sm navbar navbar-dark bg-dark" style="background-color: #e3f2fd">
+      <a class="navbar-brand" href="#" style="margin-left: 10px">GOSSIP Project</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Acceuil </a>
+            <%= link_to "Accueil", root_path, :class=>"nav-link" %>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/team">Team </a>
+            <%= link_to "Team", team_path, :class=>"nav-link" %>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/contact">Contact </a>
+            <%= link_to "Contact", contact_path, :class=>"nav-link" %>
           </li>
         </ul>
     </nav>
