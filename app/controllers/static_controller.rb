@@ -1,4 +1,11 @@
 class StaticController < ApplicationController
+
+  def index
+    @colors = ["blue", "green", "yellow", "brown", "purple", "orange"]
+    @users = User.all
+    @titles = Gossip.all
+  end
+  
   def team
   end
 
@@ -9,13 +16,7 @@ class StaticController < ApplicationController
     @first_name = params[:first_name]
   end
 
-  def index
-    @colors = ["blue", "green", "yellow", "brown", "purple", "orange"]
-    @users = User.all
-    @titles = Gossip.all
-  end
-
-  def gossip
+  def show
     @index = Gossip.find(params[:id])
     @user = User.find(@index.user_id)
   end
