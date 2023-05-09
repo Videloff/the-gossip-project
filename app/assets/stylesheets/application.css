@@ -29,6 +29,10 @@
   list-style-type: none;
 }
 
+.custom_alert {
+  width: 500px;
+}
+
 /* FONT PAGE COLOR */
 
 .bk_index {

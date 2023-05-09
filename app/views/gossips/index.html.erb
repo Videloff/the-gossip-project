@@ -31,6 +31,11 @@
     </nav>
     <!-- NAV BAR END-->
     <center>
+      <% if flash[:success].present? %>
+        <div class="alert alert-success custom_alert" role="alert">
+          <%= flash[:success] %>
+        </div>
+      <% end %>
       <h1>ACCUEIL</h1>
       <p>Bonjour à toi !</p>
       <p>Bienvenue sur la page des gossips !</p>
