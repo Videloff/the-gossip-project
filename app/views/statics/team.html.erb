@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
   </head>
-  <body class="bk_gossip">
+  <body class="bk_team">
     <nav class="navbar navbar-expand-sm navbar navbar-dark bg-dark" style="background-color: #e3f2fd">
       <a class="navbar-brand" href="#" style="margin-left: 10px">GOSSIP Project</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,13 +23,15 @@
           <li class="nav-item active">
             <%= link_to "Contact", contact_path, :class=>"nav-link" %>
           </li>
+          <li class="nav-item active">
+            <%= link_to "Créer un potin", new_gossip_path, :class=>"nav-link" %>
+          </li>
         </ul>
+      </div>
     </nav>
     <center>
-      <h1><%= @index.title %></h1>
-      <p>par <a href="user/<%= @user.id %>" class="my_link"><%= @user.first_name %></a> le <%= @index.created_at.strftime("%d/%m/%Y %H:%M") %></p>
-      <br><br>
-      <p><%= @index.content %></p>
+      <h1>TEAM</h1>
+      <p>voici notre équipe lol mdr 😇❤️😻</p>
     </center>
   </body>
 </html>

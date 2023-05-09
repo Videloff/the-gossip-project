@@ -24,6 +24,9 @@
           <li class="nav-item active">
             <%= link_to "Contact", contact_path, :class=>"nav-link" %>
           </li>
+          <li class="nav-item active">
+            <%= link_to "Créer un potin", new_gossip_path, :class=>"nav-link" %>
+          </li>
         </ul>
     </nav>
     <!-- NAV BAR END-->
@@ -44,7 +47,7 @@
                 <div class="card card-just-text" data-background="color" data-color="<%= @colors[inc] %>" data-radius="none">
                   <div class="content">
                     <h6 class="category">par <%= gossip.user.first_name %></h6>
-                    <h4 class="title"><a href="/<%= gossip.id %>"><%= gossip.title %></a></h4>
+                    <h4 class="title"><a href="/gossips/<%= gossip.id %>"><%= gossip.title %></a></h4>
                     <p class="description"><%= gossip.content %></p>
                   </div>
                 </div> <!-- end card -->

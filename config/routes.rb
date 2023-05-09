@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-  get '/' => 'static#index'
 
-  root'static#index'
+  get 'team' => 'statics#team'
+  get 'contact' => 'statics#contact'
+  get 'welcome/:first_name' => 'statics#welcome'
 
-  get 'welcome/:first_name' => 'static#welcome'
+  resources :gossips
+ 
   
-  get 'team' => 'static#team'
-
-  get 'contact' => 'static#contact'
-
-  get 'user/:index_user' => 'static#user'
-
-  get '/:id' => 'static#gossip'
-
+  # set le root en redirigeant le / vers /gossips 
+  root to: redirect('/gossips')
+  
+  resources :users, only: [:show]
 end
