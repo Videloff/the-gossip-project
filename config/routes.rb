@@ -14,5 +14,3 @@ Rails.application.routes.draw do
   get '/:id' => 'static#gossip'
 
 end
-
-# ', to:' == ' => '
