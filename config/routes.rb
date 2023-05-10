@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'contact' => 'statics#contact'
   get 'welcome/:first_name' => 'statics#welcome'
 
-  resources :gossips
+  resources :gossips do
+    resources :comments, only: [:create, :edit, :update, :destroy]
+  end
  
   
   # set le root en redirigeant le / vers /gossips 
@@ -12,6 +14,5 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show]
   resources :cities, only: [:show]
-  resources :comments, except: [:show, :index, :new]
 
 end

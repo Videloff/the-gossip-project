@@ -69,6 +69,7 @@ end
     content: Faker::Lorem.paragraph(sentence_count: 2)
   )
   comment.user = User.all.sample
+  comment.gossip_id = Gossip.all.sample.id
   comment.commentable = [Gossip.all, Comment.all].sample.sample
   comment.save
 end
