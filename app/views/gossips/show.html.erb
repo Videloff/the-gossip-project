@@ -17,7 +17,7 @@
           <% @gossip.comments.each do |comment| %>
             <div class="card text-white bg-info mb-3" style="max-width: 800px">
               <div class="card-body">
-                <div><b><%= User.find_by(id: comment.user_id).first_name %> > <%= comment.content %></b></div>
+                <div><b><%= User.find_by(id: comment.user_id).first_name %> > <%= comment.content %> [<%= link_to "edit", "/gossips/#{@gossip.id}/comments/#{comment.id}/edit" %>]</b></div>
               </div>
             </div>
           <% end %>

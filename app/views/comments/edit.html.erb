@@ -1,2 +1,22 @@
-<h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <body class="bk_show">
+    <center>
+      <br>
+      <h3>Éditer le commentaire :</h3>
+      <br>
+      <br>
+      <div class="card text-white bg-dark mb-3" style="width: 32rem;">
+        <div class="card-body">
+          <%= form_for @comment, url: gossip_comment_url, method: :patch do %>
+            <%= label_tag :content, "Nouveau contenu:", class:"h4" %><br>
+            <%= text_area_tag :content, @comment.content, rows: 10, cols: 50 %>
+            <br><br>
+            <%= submit_tag "Éditer", class: "button btn btn-outline-danger btn-dark" %>
+            <br>
+          <% end %>
+        </div>
+      </div>
+    </center>
+  </body>
+</html>

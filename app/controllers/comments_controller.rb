@@ -7,9 +7,18 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = Comment.find_by(id: params[:id])
   end
 
   def update
+    @comment = Comment.find_by(id: params[:id])
+    @path = Gossip.find_by(id: @comment.gossip_id)
+    if @comment.update(content: params['content'])
+      flash[:success] = "Le commentaire a bien été édité !"
+      redirect_to @path
+    else
+      render :edit
+    end
   end
 
   def destroy
