@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <body class="bk_gossip">
+  <body class="bk_show">
     <center>
-      <h1><%= @index.title %></h1>
-      <p>par <%= link_to "#{@user.first_name}", user_path(@user.id), :class=>"my_link" %> le <%= @index.created_at.strftime("%d/%m/%Y %H:%M") %> à <%= @city.name %></p>
+      <h1><%= @gossip.title %></h1>
+      <p>par <%= link_to "#{@user.first_name}", user_path(@user.id), :class=>"my_link" %> le <%= @gossip.created_at.strftime("%d/%m/%Y %H:%M") %> à <%= @city.name %></p>
       <br><br>
-      <p><%= @index.content %></p>
+      <p><%= @gossip.content %></p>
       <br><br>
       <%= link_to "Editer le potin", edit_gossip_path, class: "button btn btn-outline-dark btn-light" %>
       <br><br>
       <%= button_to "Supprimer le potin", gossip_path, class: "button btn btn-outline-danger btn-light", form: {data: {turbo_confirm: 'Valider ?'}}, method: :delete %>
       <br><br>
-      <p>User_name > comment</p>
-      <br><br>
-      <%= form_tag('/gossips', method: 'post') do %>
-            <br>
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-            <%= text_area_tag :content, nil, placeholder: "Votre commentaire ...", rows: 1, cols: 100 %>
-            <br><br>
-            <%= submit_tag "Envoyer" %>
-            <br>
-            <p></p>
+      <div class="card border-secondary mb-3" style="max-width: 900px; opacity: 75%">
+        <div class="card-header">Commentaires :</div>
+        <div class="card-body">
+          <% @gossip.comments.each do |comment| %>
+            <div class="card text-white bg-info mb-3" style="max-width: 800px">
+              <div class="card-body">
+                <div><b><%= User.find_by(id: comment.user_id).first_name %> > <%= comment.content %></b></div>
+              </div>
+            </div>
           <% end %>
+          <br><br>
+          <%= form_tag("/gossips/#{@gossip.id}/comments", method: 'post') do %>
+            <p class="comment-form"><%= text_area_tag :content, nil, placeholder: "Votre commentaire ...", rows: 1, cols: 100 %><%= submit_tag "Commenter" %></p>
+          <% end %>
+        </div>
+      </div>
     </center>
   </body>
 </html>
