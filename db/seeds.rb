@@ -1,13 +1,15 @@
 require 'faker'
 
-City.destroy_all
-Like.destroy_all
-Gossip.destroy_all
-User.destroy_all
-Comment.destroy_all
-Tag.destroy_all
-PrivateMessage.destroy_all
-GossipTag.destroy_all
+City.delete_all
+GossipTag.delete_all
+PrivateMessage.delete_all
+Tag.delete_all
+Like.delete_all
+Comment.delete_all
+Gossip.delete_all
+User.delete_all
+
+
 
 
 # création de 10 villes
@@ -40,12 +42,8 @@ end
 
 # création de 20 gossips et assignation aléatoire à un utilisateur et à un tag
 20.times do
-  gossip = Gossip.create(
-    title: Faker::Book.title,
-    content: Faker::Lorem.paragraph(sentence_count: 5)
-  )
-  gossip.user = User.all.sample
-  gossip.tags << Tag.all.sample
+  gossip = Gossip.new(title: Faker::Book.title, content: Faker::Lorem.paragraph(sentence_count: 5), user_id: User.all.sample.id)
+  gossip.tag_ids << Tag.all.sample.id
   gossip.save
 end
 
@@ -65,10 +63,8 @@ end
 
 # création de 20 commentaires et assignation aléatoire à un utilisateur et à un gossip
 20.times do
-  comment = Comment.create(
-    content: Faker::Lorem.paragraph(sentence_count: 2)
-  )
-  comment.user = User.all.sample
+  comment = Comment.create(content: Faker::Lorem.paragraph(sentence_count: 2))
+  comment.user_id= User.all.sample.id
   comment.gossip_id = Gossip.all.sample.id
   comment.commentable = [Gossip.all, Comment.all].sample.sample
   comment.save
