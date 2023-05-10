@@ -42,9 +42,16 @@ class GossipsController < ApplicationController
   end
 
   def destroy
-    @index = Gossip.find(params[:id])
-    if GossipTag.find(params[:id]) != nil
-      GossipTag.find(params[:id]).destroy
+    @index = Gossip.find_by(id: params[:id])
+    GossipTag.all.each do |t|
+      if t.gossip_id == params[:id]
+        t.destroy
+      end
+    end
+    Comment.all.each do |c|
+      if c.gossip_id == params[:id]
+        c.destroy
+      end
     end
     @index.destroy
     flash[:success] = "Le potin a bien été supprimé !"

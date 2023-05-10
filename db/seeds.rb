@@ -35,9 +35,7 @@ end
 
 # création de 10 tags
 10.times do
-  Tag.create(
-    title: Faker::Lorem.word
-  )
+  Tag.create!(title: Faker::Lorem.word)
 end
 
 # création de 20 gossips et assignation aléatoire à un utilisateur et à un tag
