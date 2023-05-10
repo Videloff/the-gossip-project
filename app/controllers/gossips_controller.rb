@@ -41,4 +41,14 @@ class GossipsController < ApplicationController
     end
   end
 
+  def destroy
+    @index = Gossip.find(params[:id])
+    if GossipTag.find(params[:id]) != nil
+      GossipTag.find(params[:id]).destroy
+    end
+    @index.destroy
+    flash[:success] = "Le potin a bien été supprimé !"
+    redirect_to '/'
+  end
+
 end

@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show]
   resources :cities, only: [:show]
+  resources :comments, except: [:show, :index, :new]
+
 end

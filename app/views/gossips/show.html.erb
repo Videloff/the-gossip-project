@@ -3,11 +3,25 @@
   <body class="bk_gossip">
     <center>
       <h1><%= @index.title %></h1>
-      <p>par <%= link_to "#{@user.first_name}", user_path(@user.id), :class=>"my_link" %></a> le <%= @index.created_at.strftime("%d/%m/%Y %H:%M") %> à <%= @city.name %></p>
+      <p>par <%= link_to "#{@user.first_name}", user_path(@user.id), :class=>"my_link" %> le <%= @index.created_at.strftime("%d/%m/%Y %H:%M") %> à <%= @city.name %></p>
       <br><br>
       <p><%= @index.content %></p>
       <br><br>
       <%= link_to "Editer le potin", edit_gossip_path, class: "button btn btn-outline-dark btn-light" %>
+      <br><br>
+      <%= button_to "Supprimer le potin", gossip_path, class: "button btn btn-outline-danger btn-light", form: {data: {turbo_confirm: 'Valider ?'}}, method: :delete %>
+      <br><br>
+      <p>User_name > comment</p>
+      <br><br>
+      <%= form_tag('/gossips', method: 'post') do %>
+            <br>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <%= text_area_tag :content, nil, placeholder: "Votre commentaire ...", rows: 1, cols: 100 %>
+            <br><br>
+            <%= submit_tag "Envoyer" %>
+            <br>
+            <p></p>
+          <% end %>
     </center>
   </body>
 </html>

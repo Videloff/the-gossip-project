@@ -13,7 +13,7 @@
         <div class="card-body">
           <%= form_for @gossip do %>
             <%= label_tag :title, "Nouveau titre:", class:"h4" %><br>
-            <%= text_field_tag :title, value: @gossip.title %><br><br>
+            <%= text_field_tag :title, nil, value: @gossip.title %><br><br>
             <%= label_tag :content, "Nouveau contenu:", class:"h4" %><br>
             <%= text_area_tag :content, @gossip.content, rows: 10, cols: 50 %>
             <br><br>

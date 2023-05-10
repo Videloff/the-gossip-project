@@ -20,7 +20,7 @@
           Age : <%= @user.age %>
         </li>
         <li class="bullet">
-          Ville : <%= @ville.name %>
+          Ville : <%= link_to @city.name, "/cities/#{@city.id}", :class=>"my_link" %>
         </li>
     </center>
   </body>
