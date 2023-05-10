@@ -23,7 +23,7 @@
           <% end %>
           <br><br>
           <%= form_tag("/gossips/#{@gossip.id}/comments", method: 'post') do %>
-            <p class="comment-form"><%= text_area_tag :content, nil, placeholder: "Votre commentaire ...", rows: 1, cols: 100 %><%= submit_tag "Commenter" %></p>
+            <p class="comment-form"><%= text_area_tag :content, nil, placeholder: "Votre commentaire ...", rows: 1, cols: 100 %><%= submit_tag "Commenter", class: "button btn btn-outline-info btn-dark btn-sm" %></p>
           <% end %>
         </div>
       </div>
