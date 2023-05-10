@@ -1,41 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/7bec0c7944.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-  </head>
   <body class="bk_index">
-    <!-- NAV BAR START -->
-    <nav class="navbar navbar-expand-sm navbar navbar-dark bg-dark" style="background-color: #e3f2fd">
-      <a class="navbar-brand" href="#" style="margin-left: 10px">GOSSIP Project</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <%= link_to "Accueil", root_path, :class=>"nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Team", team_path, :class=>"nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Contact", contact_path, :class=>"nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Créer un potin", new_gossip_path, :class=>"nav-link" %>
-          </li>
-        </ul>
-    </nav>
-    <!-- NAV BAR END-->
     <center>
-      <% if flash[:success].present? %>
-        <div class="alert alert-success custom_alert" role="alert">
-          <%= flash[:success] %>
-        </div>
-      <% end %>
       <h1>ACCUEIL</h1>
       <p>Bonjour à toi !</p>
       <p>Bienvenue sur la page des gossips !</p>
@@ -45,13 +11,13 @@
       <!-- POST-IT START -->
       <div class="container bootstrap snippets bootdeys">
         <div class="row">
-          <% @titles.each_with_index do |gossip, index| %>
+          <% @titles.reverse_each.with_index do |gossip, index| %>
           <% inc = index % 6 %>
             <div class="col-4 content-card">
               <div class="card-big-shadow">
                 <div class="card card-just-text" data-background="color" data-color="<%= @colors[inc] %>" data-radius="none">
                   <div class="content">
-                    <h6 class="category">par <%= gossip.user.first_name %></h6>
+                    <h6 class="category">par <a href="/users/<%= gossip.user.id %>"><%= gossip.user.first_name %></a></h6>
                     <h4 class="title"><a href="/gossips/<%= gossip.id %>"><%= gossip.title %></a></h4>
                     <p class="description"><%= gossip.content %></p>
                   </div>

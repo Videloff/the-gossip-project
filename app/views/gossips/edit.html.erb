@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <body class="bk_gossip">
+    <center>
+      <br>
+      <h3>Éditer le potin :</h3>
+      <br>
+      <h2><%= @gossip.title %></h2>
+      <br>
+      <h5><%= @gossip.content %></h5>
+      <br>
+      <div class="card text-white bg-dark mb-3" style="width: 32rem;">
+        <div class="card-body">
+          <%= form_for @gossip do %>
+            <%= label_tag :title, "Nouveau titre:", class:"h4" %><br>
+            <%= text_field_tag :title, value: @gossip.title %><br><br>
+            <%= label_tag :content, "Nouveau contenu:", class:"h4" %><br>
+            <%= text_area_tag :content, @gossip.content, rows: 10, cols: 50 %>
+            <br><br>
+            <%= submit_tag "Éditer", class: "button btn btn-outline-danger btn-dark" %>
+            <br>
+          <% end %>
+        </div>
+      </div>
+    </center>
+  </body>
+</html>

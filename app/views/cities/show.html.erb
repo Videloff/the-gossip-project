@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TheGossipProject</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/7bec0c7944.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
- 
   </head>
-
-  <body data-turbo="false">
+  <body class="bk_user">
     <nav class="navbar navbar-expand-sm navbar navbar-dark bg-dark" style="background-color: #e3f2fd">
       <a class="navbar-brand" href="#" style="margin-left: 10px">GOSSIP Project</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,12 +29,30 @@
         </ul>
     </nav>
     <center>
-      <% if flash[:success].present? %>
-        <div class="alert alert-success custom_alert" role="alert">
-          <%= flash[:success] %>
+      <h1><%= @city.name %></h1><br><br>
+
+      <!-- POST-IT START -->
+      <div class="container bootstrap snippets bootdeys">
+        <div class="row">
+          <% Gossip.all.each_with_index do |gossip, index| %>
+            <% if User.find_by(id: gossip.user_id).city_id == @city.id %>
+              <% inc = index % 6 %>
+              <div class="col-4 content-card">
+                <div class="card-big-shadow">
+                  <div class="card card-just-text" data-background="color" data-color="<%= @colors[inc] %>" data-radius="none">
+                    <div class="content">
+                      <h6 class="category">par <a href="/users/<%= gossip.user.id %>"><%= gossip.user.first_name %></a></h6>
+                      <h4 class="title"><a href="/gossips/<%= gossip.id %>"><%= gossip.title %></a></h4>
+                      <p class="description"><%= gossip.content %></p>
+                    </div>
+                  </div> <!-- end card -->
+                </div>
+              </div>
+            <% end %>
+          <% end %>
         </div>
-      <% end %>
+      </div>
+      <!-- POST-IT END -->
     </center>
-    <%= yield %>
   </body>
 </html>

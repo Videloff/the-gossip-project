@@ -9,6 +9,7 @@ class GossipsController < ApplicationController
   def show
     @index = Gossip.find(params[:id])
     @user = User.find(@index.user_id)
+    @city = City.find(@user.city_id)
   end
 
   def new
@@ -23,6 +24,20 @@ class GossipsController < ApplicationController
       redirect_to '/'
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @gossip = Gossip.find(params[:id])
+  end
+
+  def update
+    @gossip = Gossip.find(params[:id])
+    if @gossip.update(title: params['title'], content: params['content'])
+      flash[:success] = "Le potin a bien été édité !"
+      redirect_to @gossip
+    else
+      render :edit
     end
   end
 
