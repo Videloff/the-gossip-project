@@ -32,14 +32,16 @@
           <li class="nav-item active">
             <%= link_to "Contact", contact_path, :class=>"nav-link" %>
           </li>
-          <% if current_user %>
-            <li class="nav-item active">
-              <%= link_to "Créer un potin", new_gossip_path, :class=>"nav-link" %>
-            </li>
-          <% end %>
+          <li class="nav-item active">
+            <%= link_to "Créer un potin", new_gossip_path, :class=>"nav-link" %>
+          </li>
           <li class="session-nav">
             <% if current_user %>
-              <%= button_to "Se déconnecter", session_path(current_user.id), :class=>"button btn btn-outline-info btn-dark", method: :delete %>
+              <div class="session-nav" style="color: white" >
+                <%= current_user.first_name %>
+                <div style="margin-left: 10px">  </div>
+                <%= button_to "Se déconnecter", session_path(current_user.id), :class=>"button btn btn-outline-info btn-dark", method: :delete %>
+              </div>
             <% else %>
               <%= link_to "Créer un compte", new_user_path, :class=>"button btn btn-outline-info btn-dark" %>
               <div style="margin-left: 10px">  </div>
@@ -49,6 +51,7 @@
         </ul>
     </nav>
     <center>
+      <br>
       <% if flash[:success].present? %>
         <div class="alert alert-success custom_alert" role="alert">
           <%= flash[:success] %>

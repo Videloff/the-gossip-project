@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       flash[:alert] = "Email ou mot de passe invalide."
-      redirect_back(fallback_location: root_path)
+      redirect_to new_session_path
     end
   end
 
