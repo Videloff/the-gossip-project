@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
 
-  get 'team' => 'statics#team'
-  get 'contact' => 'statics#contact'
-  get 'welcome/:first_name' => 'statics#welcome'
+  # routes for mains controllers
+  resources :sessions, only: [:new, :create, :destroy]
 
   resources :gossips do
     resources :comments, only: [:create, :edit, :update, :destroy]
   end
- 
-  
-  # set le root en redirigeant le / vers /gossips 
+
+  resources :users, only: [:show, :new, :create]
+  resources :cities, only: [:show]
+   
+  # set root redirect '/' to '/gossips' as index 
   root to: redirect('/gossips')
   
-  resources :users, only: [:show]
-  resources :cities, only: [:show]
+
+  # statics links
+  get 'team' => 'statics#team'
+  get 'contact' => 'statics#contact'
+  get 'welcome/:first_name' => 'statics#welcome'
 
 end

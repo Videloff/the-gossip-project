@@ -22,7 +22,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto navbar-nav-links">
           <li class="nav-item active">
             <%= link_to "Accueil", root_path, :class=>"nav-link" %>
           </li>
@@ -34,6 +34,11 @@
           </li>
           <li class="nav-item active">
             <%= link_to "Créer un potin", new_gossip_path, :class=>"nav-link" %>
+          </li>
+          <li class="session-nav">
+            <%= link_to "Créer un compte", new_user_path, :class=>"button btn btn-outline-info btn-dark" %>
+            <div style="margin-left: 10px">  </div>
+            <%= link_to "Se connecter", new_session_path, :class=>"button btn btn-outline-dark btn-info" %>
           </li>
         </ul>
     </nav>

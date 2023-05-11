@@ -44,6 +44,19 @@
   resize: none; /* empêcher le redimensionnement de la zone de texte */
 }
 
+.session-nav {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: auto;
+}
+
+.navbar-nav-links {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 /* FONT PAGE COLOR */
 
 .bk_index {

@@ -22,15 +22,8 @@ end
 
 # création de 10 utilisateurs et assignation aléatoire à une ville
 10.times do
-  user = User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    description: Faker::Lorem.paragraph(sentence_count: 2),
-    email: Faker::Internet.email,
-    age: rand(18..80)
+  user = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph(sentence_count: 2), email: Faker::Internet.email, age: rand(18..80), password: Faker::Name.last_name, city: City.all.sample
   )
-  user.city = City.all.sample
-  user.save
 end
 
 # création de 10 tags
