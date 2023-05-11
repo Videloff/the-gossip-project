@@ -12,9 +12,11 @@
             <%= label_tag :content, "Nouveau contenu:", class:"h4" %><br>
             <%= text_area_tag :content, @comment.content, rows: 10, cols: 50 %>
             <br><br>
-            <%= submit_tag "Éditer", class: "button btn btn-outline-danger btn-dark" %>
-            <br>
-          <% end %>
+            <div class="comment-form" style="margin-left: 33%">
+              <%= submit_tag "Éditer", class: "button btn btn-outline-danger btn-dark", method: :patch %><% end %>
+              <br><div style="margin-left: 10px">  </div>
+              <%= button_to "Supprimer", gossip_comment_path, class: "button btn btn-outline-danger btn-light", form: {data: {turbo_confirm: 'Valider ?'}}, method: :delete %>
+            </div>
         </div>
       </div>
     </center>

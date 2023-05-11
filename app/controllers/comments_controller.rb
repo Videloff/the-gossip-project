@@ -22,6 +22,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find_by(id: params[:id])
+    @path = Gossip.find_by(id: @comment.gossip_id)
+    @comment.destroy
+    flash[:success] = "Le commentaire a bien été supprimé !"
+    redirect_to @path
   end
 
 end
