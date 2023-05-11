@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  # routes for mains controllers
-  resources :sessions, only: [:new, :create, :destroy]
+
 
   resources :gossips do
     resources :comments, only: [:create, :edit, :update, :destroy]
@@ -13,7 +12,9 @@ Rails.application.routes.draw do
   # set root redirect '/' to '/gossips' as index 
   root to: redirect('/gossips')
   
-
+  # routes for main controllers
+  resources :sessions, only: [:new, :create, :destroy]
+  
   # statics links
   get 'team' => 'statics#team'
   get 'contact' => 'statics#contact'

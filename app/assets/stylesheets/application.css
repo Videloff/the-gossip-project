@@ -57,6 +57,20 @@
   justify-content: flex-end;
 }
 
+.form-group {
+  margin-bottom: 10px;
+}
+
+.align-links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.opacity {
+  opacity: 60%;
+}
+
 /* FONT PAGE COLOR */
 
 .bk_index {

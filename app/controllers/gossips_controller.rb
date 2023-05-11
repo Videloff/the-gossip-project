@@ -17,7 +17,7 @@ class GossipsController < ApplicationController
   end
 
   def create
-    @gossip = Gossip.new(title: params['title'], content: params['content'], user_id: User.all.sample.id)
+    @gossip = Gossip.new(title: params['title'], content: params['content'], user_id: current_user.id)
 
     if @gossip.save
       flash[:success] = "Le potin a bien été créé !"
